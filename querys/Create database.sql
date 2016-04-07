@@ -44,7 +44,28 @@ CREATE TABLE CustomerHistory
 	EID int DEFAULT 1 ,
 	CID int DEFAULT 1,
 	History date not null,
+	PRIMARY KEY (HISID),
 	FOREIGN KEY (EID) REFERENCES Employes(EID) ON DELETE SET DEFAULT,
 	FOREIGN KEY (CID) REFERENCES Customers(CID) ON DELETE SET NULL
+
+);
+
+CREATE TABLE Accounttype
+(
+	ACT_ID int not null IDENTITY(1,1),
+	acc_description varchar(150) not null,
+	acc_type varchar(50) not null
+	PRIMARY KEY (ACT_ID)
+);
+CREATE TABLE Accountstatus
+(
+	ACS_ID int not null identity(1,1),
+	Acstatus varchar(50) not null
+);
+CREATE TABLE PredpisSplatky
+(
+	PRSP_ID int not null identity(1,1),
+	Vyska_pouzicky int not null,
+	urok int not null,
 
 );

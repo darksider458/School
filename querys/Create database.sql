@@ -55,17 +55,6 @@ CREATE TABLE Employes
 	FOREIGN KEY (Branch_ID) REFERENCES Branch(BR_ID)ON DELETE SET NULL 
 );
 
-CREATE TABLE CustomerHistory
-(
-	HISID int not null identity(1,1),
-	EID int DEFAULT 1 ,
-	CID int DEFAULT 1,
-	History date not null,
-	PRIMARY KEY (HISID),
-	FOREIGN KEY (EID) REFERENCES Employes(EID) ON DELETE SET DEFAULT,
-	--FOREIGN KEY (CID) REFERENCES Customers(CID) ON DELETE SET NULL
-
-);
 CREATE TABLE Accounttype
 (
 	ACT_ID int not null IDENTITY(1,1),
@@ -124,4 +113,16 @@ CREATE TABLE Customers
 	PRIMARY KEY (CID),
 	FOREIGN KEY (EID) REFERENCES Employes(EID),
 	FOREIGN KEY (Adres_ID) REFERENCES Adresy(AID) ON DELETE SET null
-)
+);
+
+CREATE TABLE CustomerHistory
+(
+	HISID int not null identity(1,1),
+	EID int DEFAULT 1 ,
+	CID int DEFAULT 1,
+	History date not null,
+	PRIMARY KEY (HISID),
+	FOREIGN KEY (EID) REFERENCES Employes(EID) ON DELETE SET DEFAULT,
+	FOREIGN KEY (CID) REFERENCES Customers(CID) ON DELETE SET NULL
+
+);

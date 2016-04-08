@@ -113,3 +113,15 @@ CREATE TABLE MoneyTransfer
 	FOREIGN KEY (SecondAccount) REFERENCES Accounts(Acc_ID)
 	
 );
+
+CREATE TABLE Customers
+(
+	CID int not null identity(1,1),
+	FirstName nvarchar(100) not null,
+	LastName nvarchar(100) not null,
+	Adres_ID int,
+	EID int not null,
+	PRIMARY KEY (CID),
+	FOREIGN KEY (EID) REFERENCES Employes(EID),
+	FOREIGN KEY (Adres_ID) REFERENCES Adresy(AID) ON DELETE SET null
+)

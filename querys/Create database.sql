@@ -46,6 +46,7 @@ CREATE TABLE Employes
 	LastName nvarchar(100) not null,
 	UserName nvarchar(100) not null UNIQUE,
 	Paswd varbinary(128) not null,
+	Date_of_Birth date not null,
 	Adres_ID int,
 	Branch_ID int ,
 	Pozition_ID int not null,

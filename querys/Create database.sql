@@ -86,11 +86,10 @@ CREATE TABLE Accounts
 	Money_on_Account money not null,
 	AccT_ID int not null,
 	AccS_ID int not null,
-	PrSp_ID int null,
 	PRIMARY KEY (Acc_ID),
 	FOREIGN KEY (AccT_ID) REFERENCES Accounttype(ACT_ID),
 	FOREIGN KEY (AccS_ID) REFERENCES Accountstatus(ACS_ID),
-	FOREIGN KEY (PrSp_ID) REFERENCES PredpisSplatky(PRSP_ID)
+
 );
 CREATE TABLE MoneyTransfer
 (
@@ -98,6 +97,7 @@ CREATE TABLE MoneyTransfer
 	FirstAccount int not null,
 	SecondAccount int not null,
 	Amount money not null,
+	Date_of_transfer date not null,
 	PRIMARY KEY (MT_ID),
 	FOREIGN KEY (FirstAccount) REFERENCES Accounts(Acc_ID),
 	FOREIGN KEY (SecondAccount) REFERENCES Accounts(Acc_ID)

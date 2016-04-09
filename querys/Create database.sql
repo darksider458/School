@@ -111,7 +111,7 @@ CREATE TABLE Customers
 	LastName nvarchar(100) not null,
 	Adres_ID int,
 	EID int not null,
-	Date_of_Birth not null,
+	Date_of_Birth date not null,
 	PRIMARY KEY (CID),
 	FOREIGN KEY (EID) REFERENCES Employes(EID),
 	FOREIGN KEY (Adres_ID) REFERENCES Adresy(AID) ON DELETE SET null
@@ -128,3 +128,4 @@ CREATE TABLE CustomerHistory
 	FOREIGN KEY (CID) REFERENCES Customers(CID) ON DELETE SET NULL
 
 );
+

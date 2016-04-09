@@ -69,15 +69,17 @@ CREATE TABLE Accountstatus
 	Acstatus varchar(50) not null
 	PRIMARY KEY (ACS_ID),
 );
-CREATE TABLE PredpisSplatky
+CREATE TABLE LOAN
 (
 	PRSP_ID int not null identity(1,1),
 	Vyska_pouzicky int not null,
 	Urok int not null,
 	Pocet_Splatok int not null,
-	Vyska_Splatok int not null,
+	Vyska_Splatok int not null
+	CID int,
 	Vyska_PoslenejSplatky int not null,
 	PRIMARY KEY (PRSP_ID)
+	FOREIGN KEY (CID) REFERENCES Customers(CID);
 );
 CREATE TABLE Accounts
 (

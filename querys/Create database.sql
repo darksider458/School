@@ -69,17 +69,29 @@ CREATE TABLE Accountstatus
 	Acstatus varchar(50) not null
 	PRIMARY KEY (ACS_ID),
 );
+CREATE TABLE Customers
+(
+	CID int not null identity(1,1),
+	FirstName nvarchar(100) not null,
+	LastName nvarchar(100) not null,
+	Adres_ID int,
+	EID int not null,
+	Date_of_Birth date not null,
+	PRIMARY KEY (CID),
+	FOREIGN KEY (EID) REFERENCES Employes(EID),
+	FOREIGN KEY (Adres_ID) REFERENCES Adresy(AID) ON DELETE SET null
+);
 CREATE TABLE LOAN
 (
 	PRSP_ID int not null identity(1,1),
 	Vyska_pouzicky int not null,
 	Urok int not null,
 	Pocet_Splatok int not null,
-	Vyska_Splatok int not null
+	Vyska_Splatok int not null,
 	CID int,
 	Vyska_PoslenejSplatky int not null,
-	PRIMARY KEY (PRSP_ID)
-	FOREIGN KEY (CID) REFERENCES Customers(CID);
+	PRIMARY KEY (PRSP_ID),
+	FOREIGN KEY (CID) REFERENCES Customers(CID)
 );
 CREATE TABLE Accounts
 (
@@ -88,9 +100,11 @@ CREATE TABLE Accounts
 	Money_on_Account money not null,
 	AccT_ID int not null,
 	AccS_ID int not null,
+	CID int not null,
 	PRIMARY KEY (Acc_ID),
 	FOREIGN KEY (AccT_ID) REFERENCES Accounttype(ACT_ID),
 	FOREIGN KEY (AccS_ID) REFERENCES Accountstatus(ACS_ID),
+	FOREIGN KEY (CID) REFERENCES Customers(CID)
 
 );
 CREATE TABLE MoneyTransfer
@@ -106,18 +120,7 @@ CREATE TABLE MoneyTransfer
 	
 );
 
-CREATE TABLE Customers
-(
-	CID int not null identity(1,1),
-	FirstName nvarchar(100) not null,
-	LastName nvarchar(100) not null,
-	Adres_ID int,
-	EID int not null,
-	Date_of_Birth date not null,
-	PRIMARY KEY (CID),
-	FOREIGN KEY (EID) REFERENCES Employes(EID),
-	FOREIGN KEY (Adres_ID) REFERENCES Adresy(AID) ON DELETE SET null
-);
+
 
 CREATE TABLE CustomerHistory
 (
@@ -130,4 +133,5 @@ CREATE TABLE CustomerHistory
 	FOREIGN KEY (CID) REFERENCES Customers(CID) ON DELETE SET NULL
 
 );
+
 
